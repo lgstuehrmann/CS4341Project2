@@ -4,17 +4,17 @@ from tools import preprocess
 import matplotlib.pyplot as plot
 # Img Preprocessing
 batch_size = 512
-epochs = 1000
+epochs = 2000
 
 x_train, x_test, x_val, y_train, y_test, y_val = preprocess()
 
 # Begin Model
 model = Sequential()
-model.add(Dense(10, input_shape=(28 * 28,), kernel_initializer='he_normal'))
+model.add(Dense(20, input_shape=(28 * 28,), kernel_initializer='he_normal'))
 model.add(Activation('relu'))
-model.add(Dense(10, kernel_initializer='he_normal'))
+model.add(Dense(15, kernel_initializer='he_normal'))
 model.add(Activation('selu'))
-model.add(Dense(10, kernel_initializer='glorot_uniform'))
+model.add(Dense(12, kernel_initializer='glorot_uniform'))
 model.add(Activation('tanh'))
 model.add(Dense(10, kernel_initializer='he_normal'))
 model.add(Activation('softmax'))
@@ -46,3 +46,5 @@ plot.ylabel('Loss')
 plot.xlabel('Epoch')
 plot.legend(['Train', 'Test'], loc='upper right')
 plot.show()
+
+model.save('knn2000.h5')
