@@ -1,7 +1,8 @@
 from keras.models import Sequential
 from keras.layers import Dense, Activation
-from tools import preprocess
+from tools import preprocess, confusion
 import matplotlib.pyplot as plot
+
 # Img Preprocessing
 batch_size = 512
 epochs = 2000
@@ -48,3 +49,4 @@ plot.legend(['Train', 'Test'], loc='upper right')
 plot.show()
 
 model.save('knn2000.h5')
+
