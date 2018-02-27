@@ -43,10 +43,27 @@ p = 2
 #     print(k)
 neigh = KNeighborsClassifier(n_neighbors=10, weights=weight, algorithm=algo, leaf_size=leaf, p=p, metric='minkowski', metric_params=None, n_jobs=1)
 neigh.fit(images_train, labels_train)
-result = neigh.predict(images_train)
-print(confusion(labels_train, result))
-print(accuracy_score(labels_train, result))
-#
+result = neigh.predict(images_test)
+matrix = confusion(labels_test, result)
+print(matrix)
+print(accuracy_score(labels_test, result))
+
+figure, ax = plt.subplots()
+plt.ylabel('Predictions')
+plt.xlabel('Actual')
+plt.title('Confusion Matrix for Keras Neural Net')
+plt.xticks([0,1,2,3,4,5,6,7,8,9])
+plt.yticks([0,1,2,3,4,5,6,7,8,9])
+
+ax.matshow(matrix, cmap=plt.cm.Spectral)
+x = [0,1,2,3,4,5,6,7,8,9]
+for i in x:
+    for j in x:
+        c = matrix[j,i]
+        ax.text(i,j,str(c), va='center', ha='center')
+
+plt.show()
+
 # plt.plot(neighbors, ac_scores_uniform, 'b-', label='Uniform')
 # plt.plot(neighbors, ac_scores_distance, 'r-', label='Distance')
 # plt.xlabel('Number of Neighbors K')
