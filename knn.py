@@ -1,3 +1,9 @@
+"""
+Robert Harrison
+Lucy Stuehrmann
+Brady Snowden
+"""
+
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 from tools import preprocess, confusion, visualize
