@@ -68,7 +68,7 @@ def dispMatrix(matrix, title):
 	plt.title(title)
 	plt.xticks([0,1,2,3,4,5,6,7,8,9])
 	plt.yticks([0,1,2,3,4,5,6,7,8,9])
-	ax.matshow(matrix, cmap=plt.cm.Blues)
+	ax.matshow(matrix, cmap=plt.cm.Spectral)
 	x = [0,1,2,3,4,5,6,7,8,9]
 	for i in x:
 		for j in x:
@@ -79,9 +79,31 @@ def dispMatrix(matrix, title):
 	print(matrix)
 
 
+# create hand engineered features which are the pixel intensity averages
+# over 9 sets of 3 concurrent rows in the image matrix. 
+def CustomFeat(images_input, length):
+	# reshape images into a 28-by-28 matrices
+	images = np.reshape(images_input, (length, 28,28))
+	images_custom = []
+	for i in images:
+		mylist = []
+		avg3Row = 0
+		n = 0
+		for x in i:
+			for y in x:
+				n += 1
+				if n%3 == 0:
+					mylist.append(avg3Row/84)
+					avg3Row = 0;
+				avg3Row += y
+		images_custom.append(mylist)
+	return images_custom
+
+
+	"""
 # create hand engineered features including: average pixel intensity, average number of pixels,
 # longest number of pixels in a row, number of empty spaces
-def CustomFeat(images_input, length):
+def deprecated CustomFeat(images_input, length):
 	# reshape images into a 28-by-28 matrices
 	images = np.reshape(images_input, (length, 28,28))
 	images_custom = []
@@ -107,3 +129,4 @@ def CustomFeat(images_input, length):
 		avgPix = avgPix/784
 		images_custom.append([avgInten, avgPix, pixInRow, empty])
 	return images_custom
+"""

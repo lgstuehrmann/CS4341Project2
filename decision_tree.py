@@ -27,8 +27,8 @@ cimg_test = tools.CustomFeat(images_test, len(labels_test))
 basTree = DecisionTreeClassifier(random_state=100)
 # Create a modified tree changing different values to get 
 # the confusion matrix to fit better
-modTree = DecisionTreeClassifier(criterion='gini', splitter='best', max_depth=28,
-	min_samples_split=10, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None,
+modTree = DecisionTreeClassifier(criterion='entropy', splitter='best', max_depth=20,
+	min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None,
 	random_state=100, max_leaf_nodes=None, class_weight=None, presort=False)
 # Create a Decision Tree based on custom arguements made
 # from the MNIST data
