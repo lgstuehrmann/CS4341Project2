@@ -1,4 +1,8 @@
 """
+Robert Harrison
+Lucy Stuehrmann
+Brady Snowden
+
 decision_tree.py
 The Code for the decision tree model and training for 
 project 2
