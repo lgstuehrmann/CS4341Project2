@@ -1,3 +1,9 @@
+"""
+Robert Harrison
+Lucy Stuehrmann
+Brady Snowden
+"""
+
 from keras.models import Sequential
 from keras.layers import Dense, Activation
 from tools import preprocess, confusion
