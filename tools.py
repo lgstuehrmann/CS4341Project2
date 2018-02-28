@@ -1,4 +1,8 @@
 """
+Robert Harrison
+Lucy Stuehrmann
+Brady Snowden
+
 tools.py
 python file that contains the function which preprocesses the data
 """
